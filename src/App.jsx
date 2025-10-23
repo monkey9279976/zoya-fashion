@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { products } from "./data";
+import { products } from "./data.js"; // ✅ explicitly include .js for Vite builds
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -14,22 +14,33 @@ function App() {
 
   return (
     <div className="app">
+      {/* 🩷 Hero Section */}
       <header className="hero">
-        <img src="/images/hero-banner.jpg" alt="Fashion Hero" className="hero-img" />
+        <img
+          src="/images/hero-banner.jpg"
+          alt="Fashion Hero"
+          className="hero-img"
+        />
         <div className="hero-text">
           <h1>Zoya Fashion</h1>
           <p>Discover your style — elegant, timeless, and confident.</p>
-          <a href="#shop" className="shop-btn">Shop Now</a>
+          <a href="#shop" className="shop-btn">
+            Shop Now
+          </a>
         </div>
       </header>
 
+      {/* 🛍️ Shop Section */}
       <section id="shop" className="shop-section">
         <h2>Shop Collection</h2>
+
         <div className="filters">
           {categories.map((cat) => (
             <button
               key={cat}
-              className={`filter-btn ${selectedCategory === cat ? "active" : ""}`}
+              className={`filter-btn ${
+                selectedCategory === cat ? "active" : ""
+              }`}
               onClick={() => setSelectedCategory(cat)}
             >
               {cat}
@@ -51,8 +62,9 @@ function App() {
         </div>
       </section>
 
+      {/* 💅 Footer */}
       <footer>
-        <p>© 2025 Zoya Fashion | Designed with ❤️</p>
+        <p>© {new Date().getFullYear()} Zoya Fashion | Designed with ❤️</p>
       </footer>
     </div>
   );
